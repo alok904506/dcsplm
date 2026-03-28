@@ -76,7 +76,7 @@ export default function AboutDCSPage() {
                             </h2>
                             <div className="space-y-4 text-gray-600 leading-relaxed mb-8">
                                 <p>
-                                    At <span className="font-semibold text-primary">DCS</span>, we redefine learning through our pioneering "Industry Inside Institute" model—an approach that seamlessly integrates real-world industrial experience with academic education. This model eliminates the traditional gap between classroom learning and industry expectations.
+                                    At <span className="font-semibold text-primary">DCS</span>, we redefine learning through our pioneering &quot;Industry Inside Institute&quot; model&mdash;an approach that seamlessly integrates real-world industrial experience with academic education. This model eliminates the traditional gap between classroom learning and industry expectations.
                                 </p>
                                 <p>
                                     Through strategic collaborations with universities and technical institutes, we create an industry-embedded learning ecosystem where:

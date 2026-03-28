@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Play } from 'lucide-react'
 import PageHero from '@/components/ui/design-system/PageHero'
@@ -67,10 +68,11 @@ export default function VideosPage() {
                                         className="w-full h-full cursor-pointer relative"
                                         onClick={() => setPlayingId(id)}
                                     >
-                                        <img 
+                                        <Image 
                                             src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`}
                                             alt={`Video thumbnail ${i + 1}`}
                                             className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                                            fill
                                         />
                                         
                                         {/* Play button */}

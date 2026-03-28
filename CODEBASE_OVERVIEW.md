@@ -17,9 +17,9 @@ DCS PLM is a state-of-the-art digital ecosystem built to serve as the unified br
 - **TypeScript 5.3**: Strict typing across data models and component props to prevent runtime errors.
 
 ### Data & Authentication
-- **Prisma 5.19.1**: Acting as the abstraction layer for PostgreSQL. It provides full IntelliSense for database queries.
+- **Mocked Data Layer**: The project currently uses mocked data for all entities (Courses, Blogs, Jobs, etc.) for demonstration and initial presentation purposes.
+- **PostgreSQL (Optional)**: While the infrastructure is ready for PostgreSQL, the current implementation uses in-memory or static mock data in server actions.
 - **NextAuth.js v5 Beta**: Implements a session-based auth system. Uses a custom `auth.config.ts` for callbacks during the login flow.
-- **PostgreSQL**: Hosted as the primary relational store, handling complex relationships between courses, progress, and users.
 
 ### UI / UX Architecture
 - **Tailwind CSS**: Custom configuration (`tailwind.config.ts`) includes extended color palettes and animation keyframes.
@@ -67,12 +67,9 @@ The LMS is the "heart" of the platform.
 
 ---
 
-## � 5. Database Schema & Data Integrity
+## 💾 5. Data Management
 
-The Prisma schema (`prisma/schema.prisma`) is highly relational:
-- **Referential Integrity**: Most models use `onDelete: Cascade` to ensure that if a course is deleted, its chapters, lessons, and enrollments follow.
-- **Indexing**: Frequent lookup fields (like `courseId` and `userId`) are indexed for faster query performance.
-- **Role-Based Access**: The `User` model defines a `role` field (`ADMIN` | `STUDENT`) which is injected into the NextAuth session.
+The system is designed with a highly relational model in mind (User, Course, Chapter, Lesson, UserProgress, etc.), which is currently mocked in `src/actions/` to ensure visual excellence without the complexity of a live database.
 
 ---
 
@@ -81,11 +78,11 @@ The Prisma schema (`prisma/schema.prisma`) is highly relational:
 Located in `src/actions/`, these functions are the "Backend" of our Next.js app:
 | Action File | Purpose | Key Functionality |
 | :--- | :--- | :--- |
-| `admin-users.ts` | User Mgmt | Admin tool to manage, delete, or promote users. |
-| `course.ts` | Course CRUD | Validation, publishing logic (requires 1 chapter), and revalidation. |
-| `blog.ts` | CMS Engine | Slug generation check, tag management, view count increments. |
-| `enroll.ts` | Student Flow | Bridges the gap between course browsing and LMS participation. |
-| `user-progress.ts`| Progress | Updates the completion status of lessons for an active user. |
+| `admin-users.ts` | User Mgmt | Mocked tool to manage, delete, or promote users. |
+| `course.ts` | Course CRUD | Mocked validation and publishing logic. |
+| `blog.ts` | CMS Engine | Mocked slug check, tag management, view count increments. |
+| `enroll.ts` | Student Flow | Mocked student participation flow. |
+| `user-progress.ts`| Progress | Mocked completion status of lessons for an active user. |
 
 ---
 
@@ -106,8 +103,8 @@ Located in `src/actions/`, these functions are the "Backend" of our Next.js app:
 
 ### Environment Variables Structure:
 ```env
-DATABASE_URL=""     # Primary DB connection
-DIRECT_URL=""       # Direct connection (bypasses pooling)
+DATABASE_URL=""     # Optional: Primary DB connection
+DIRECT_URL=""       # Optional: Direct connection
 AUTH_SECRET=""      # NextAuth encryption key
 CLOUDINARY_CLOUD_NAME="" # Image Hosting
 CLOUDINARY_API_KEY=""    # Image API
@@ -116,9 +113,8 @@ RESEND_API_KEY=""   # Email Engine
 
 ### Critical Scripts:
 - `npm run dev`: Starts the local development environment with HMR.
-- `npx prisma studio`: Visual interface to browse and edit database records.
 - `npm run build`: Production-ready bundle optimization.
 
 ### Production Considerations:
 - **Build Optimization**: Uses `next.config.js` to handle image domains (Cloudinary) and experimental features if any.
-- **Database Migrations**: `npx prisma migrate deploy` should be run in CI/CD pipelines before deployment.
+- **Mock Data Persistence**: Changes to data are local and will reset when the server restarts or as per Next.js cache settings.

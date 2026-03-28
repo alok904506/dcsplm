@@ -1,5 +1,4 @@
-// Caching strategy: Revalidate every hour
-export const revalidate = 3600
+'use client'
 
 import { blogPosts } from '@/data/blogData'
 import Link from 'next/link'
@@ -7,7 +6,7 @@ import Image from 'next/image'
 import { Calendar, User, ArrowRight, Heart, MessageCircle, Eye, Search, AlertCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
 
-export default async function BlogsPage() {
+export default function BlogsPage() {
     const blogs = blogPosts
     const categories = [...new Set(blogs.map(b => b.category))]
     const errorOccurred = false
