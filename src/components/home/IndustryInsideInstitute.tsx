@@ -95,10 +95,10 @@ const IndustryInsideInstitute = () => {
                         </div>
                         <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg transform -translate-y-8">
                             <Image
-                                src="/images/logo.png"
+                                src="/images/innovation-lab.png"
                                 alt="Innovation Lab"
                                 fill
-                                className="object-cover p-8 hover:scale-110 transition-transform duration-700"
+                                className="object-cover hover:scale-110 transition-transform duration-700"
                             />
                         </div>
                     </motion.div>
