@@ -27,6 +27,15 @@ export default function AboutDCSPage() {
         { title: 'Growth', description: 'Committed to continuous learning and development for individuals and organizations.', icon: Sprout, color: 'cyan' },
     ]
 
+    const valueColorClasses: Record<string, string> = {
+        primary: 'text-primary bg-primary/5 group-hover:bg-primary',
+        secondary: 'text-secondary bg-secondary/5 group-hover:bg-secondary',
+        emerald: 'text-emerald-600 bg-emerald-50 group-hover:bg-emerald-600',
+        amber: 'text-amber-600 bg-amber-50 group-hover:bg-amber-600',
+        violet: 'text-violet-600 bg-violet-50 group-hover:bg-violet-600',
+        cyan: 'text-cyan-600 bg-cyan-50 group-hover:bg-cyan-600',
+    }
+
     const pillars = [
         'Students work directly with industry experts',
         'Real-time industrial projects become part of the curriculum',
@@ -42,7 +51,7 @@ export default function AboutDCSPage() {
                 title="Empowering Innovation"
                 titleHighlight="Transforming Industries"
                 subtitle="Through the Industry Inside Institute model — seamlessly bridging real-world industrial experience with academic education."
-                primaryCta={{ href: '/contact-us', label: 'Partner With Us' }}
+                primaryCta={{ href: '/partner-with-us', label: 'Partner With Us' }}
                 secondaryCta={{ href: '#approach', label: 'Our Approach' }}
                 backgroundImage="/images/classroom.jpg"
             />
@@ -169,11 +178,11 @@ export default function AboutDCSPage() {
                                     {String(i + 1).padStart(2, '0')}
                                 </span>
                                 <motion.div 
-                                    className="w-16 h-16 rounded-2xl bg-primary/5 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/10 transition-colors duration-300 relative z-10"
+                                    className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 relative z-10 ${valueColorClasses[value.color]}`}
                                     whileHover={{ rotate: [0, -10, 10, -5, 5, 0], scale: 1.1 }}
                                     transition={{ duration: 0.4 }}
                                 >
-                                    <value.icon className="w-8 h-8 text-primary group-hover:text-primary-hover transition-colors duration-300" />
+                                    <value.icon className="w-8 h-8 transition-colors duration-300 group-hover:text-white" />
                                 </motion.div>
                                 <h4 className="text-lg font-bold text-gray-900 mb-2 relative z-10">{value.title}</h4>
                                 <p className="text-gray-500 text-sm leading-relaxed relative z-10">{value.description}</p>

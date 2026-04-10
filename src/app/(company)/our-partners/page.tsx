@@ -28,7 +28,7 @@ export default function OurPartnersPage() {
                 title="Our"
                 titleHighlight="Partners"
                 subtitle="Collaborating with industry leaders, academic institutions, and technology innovators to deliver world-class education and innovation."
-                primaryCta={{ href: '/contact-us', label: 'Partner With Us' }}
+                primaryCta={{ href: '/partner-with-us', label: 'Partner With Us' }}
                 backgroundImage="/images/classroom.jpg"
             />
 

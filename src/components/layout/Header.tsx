@@ -154,7 +154,7 @@ const Header = () => {
                             })}
                             <div className="pl-6 ml-6 border-l border-gray-100 flex items-center">
                                 <Link 
-                                    href="/contact-us"
+                                    href="/partner-with-us"
                                     className="bg-red-600 text-white px-7 py-2.5 rounded-full text-sm font-bold shadow-md hover:bg-red-700 transition-all whitespace-nowrap"
                                 >
                                     Partner With Us
@@ -165,7 +165,7 @@ const Header = () => {
                         {/* Mobile Trigger */}
                         <div className="flex items-center gap-3">
                             <Link 
-                                href="/contact-us"
+                                href="/partner-with-us"
                                 className="hidden sm:flex bg-red-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-md hover:bg-red-700 transition-all lg:hidden"
                             >
                                 Partner With Us
