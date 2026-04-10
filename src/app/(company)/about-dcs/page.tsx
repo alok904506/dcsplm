@@ -4,11 +4,10 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ArrowRight, Building2, Target } from 'lucide-react'
+import { ArrowRight, Building2, Target, Check, Star, Lightbulb, HeartHandshake, Globe, TrendingUp, Sprout } from 'lucide-react'
 import Link from 'next/link'
 import PageHero from '@/components/ui/design-system/PageHero'
 import StandardHeading from '@/components/ui/design-system/StandardHeading'
-import { Check } from 'lucide-react'
 
 export default function AboutDCSPage() {
     const storyRef = useRef(null)
@@ -20,12 +19,12 @@ export default function AboutDCSPage() {
     const isValuesInView = useInView(valuesRef, { once: true, margin: '-100px' })
 
     const coreValues = [
-        { title: 'Excellence', description: 'We strive for excellence in everything we do, from service delivery to client relationships.', icon: '⭐', color: 'primary' },
-        { title: 'Innovation', description: 'Embracing change and continuously innovating to stay ahead in a dynamic world.', icon: '💡', color: 'secondary' },
-        { title: 'Integrity', description: 'Operating with transparency, honesty, and ethical practices in all engagements.', icon: '🤝', color: 'emerald' },
-        { title: 'Collaboration', description: 'Working together with clients, partners, and teams to achieve shared goals.', icon: '🌐', color: 'amber' },
-        { title: 'Impact', description: 'Creating measurable, lasting impact for our clients and communities.', icon: '📈', color: 'violet' },
-        { title: 'Growth', description: 'Committed to continuous learning and development for individuals and organizations.', icon: '🌱', color: 'cyan' },
+        { title: 'Excellence', description: 'We strive for excellence in everything we do, from service delivery to client relationships.', icon: Star, color: 'primary' },
+        { title: 'Innovation', description: 'Embracing change and continuously innovating to stay ahead in a dynamic world.', icon: Lightbulb, color: 'secondary' },
+        { title: 'Integrity', description: 'Operating with transparency, honesty, and ethical practices in all engagements.', icon: HeartHandshake, color: 'emerald' },
+        { title: 'Collaboration', description: 'Working together with clients, partners, and teams to achieve shared goals.', icon: Globe, color: 'amber' },
+        { title: 'Impact', description: 'Creating measurable, lasting impact for our clients and communities.', icon: TrendingUp, color: 'violet' },
+        { title: 'Growth', description: 'Committed to continuous learning and development for individuals and organizations.', icon: Sprout, color: 'cyan' },
     ]
 
     const pillars = [
@@ -33,14 +32,6 @@ export default function AboutDCSPage() {
         'Real-time industrial projects become part of the curriculum',
         'Innovation labs and live project environments are set up within the campus',
         'Practical problem-solving becomes a core learning method',
-    ]
-
-    const metrics = [
-        { title: 'Customer Delight', percentage: '96%' },
-        { title: 'Skill Development', percentage: '85%' },
-        { title: 'Strategic Management', percentage: '92%' },
-        { title: 'Customer Support', percentage: '70%' },
-        { title: 'Data Science', percentage: '88%' },
     ]
 
     return (
@@ -101,7 +92,7 @@ export default function AboutDCSPage() {
                             className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl group"
                         >
                             <Image
-                                src="/images/vlced-img-6.webp"
+                                src="/images/classroom.jpg"
                                 alt="Industry Inside Institute"
                                 fill
                                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -171,50 +162,50 @@ export default function AboutDCSPage() {
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
                                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                                className="relative bg-gray-50 rounded-2xl p-7 hover:bg-white hover:shadow-xl border border-gray-100 transition-all duration-300 group hover:-translate-y-1 overflow-hidden text-center"
+                                whileHover={{ y: -8, scale: 1.02 }}
+                                className="relative bg-gray-50 rounded-2xl p-7 hover:bg-white hover:shadow-xl border border-gray-100 transition-all duration-300 group overflow-hidden text-center"
                             >
-                                <span className="absolute -top-4 -right-2 text-[100px] font-black leading-none select-none text-gray-900/[0.03]">
+                                <span className="absolute -top-4 -right-2 text-[100px] font-black leading-none select-none text-gray-900/[0.03] group-hover:text-gray-900/[0.06] group-hover:scale-110 transition-all duration-500">
                                     {String(i + 1).padStart(2, '0')}
                                 </span>
-                                <div className="w-16 h-16 rounded-2xl bg-primary/5 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/10 transition-colors duration-300">
-                                    <span className="text-3xl">{value.icon}</span>
-                                </div>
-                                <h4 className="text-lg font-bold text-gray-900 mb-2">{value.title}</h4>
-                                <p className="text-gray-500 text-sm leading-relaxed">{value.description}</p>
+                                <motion.div 
+                                    className="w-16 h-16 rounded-2xl bg-primary/5 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/10 transition-colors duration-300 relative z-10"
+                                    whileHover={{ rotate: [0, -10, 10, -5, 5, 0], scale: 1.1 }}
+                                    transition={{ duration: 0.4 }}
+                                >
+                                    <value.icon className="w-8 h-8 text-primary group-hover:text-primary-hover transition-colors duration-300" />
+                                </motion.div>
+                                <h4 className="text-lg font-bold text-gray-900 mb-2 relative z-10">{value.title}</h4>
+                                <p className="text-gray-500 text-sm leading-relaxed relative z-10">{value.description}</p>
                             </motion.div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Core Metrics */}
+            {/* DCS Transforming Education */}
             <section className="section-padding bg-gradient-to-b from-gray-50 to-white">
                 <div className="container-custom">
                     <StandardHeading
-                        title="Our Impact in Numbers"
-                        badge="Outcomes"
+                        title="DCS Transforming Education"
+                        badge="Impact"
                         centered
                     />
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
-                        {metrics.map((metric, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className="relative bg-white rounded-2xl p-7 text-center border border-gray-100 hover:border-primary/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group overflow-hidden"
-                            >
-                                <span className="absolute -top-3 -right-1 text-[80px] font-black leading-none select-none text-primary/[0.04]">
-                                    {i + 1}
-                                </span>
-                                <div className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-3">
-                                    {metric.percentage}
-                                </div>
-                                <p className="text-sm font-semibold text-gray-600">{metric.title}</p>
-                            </motion.div>
-                        ))}
-                    </div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="relative w-full max-w-5xl mx-auto  overflow-hidden"
+                    >
+                        <Image
+                            src="/images/dscscore.png"
+                            alt="DCS Transforming Education"
+                            width={1200}
+                            height={800}
+                            className="w-full h-auto block"
+                        />
+                    </motion.div>
                 </div>
             </section>
 
